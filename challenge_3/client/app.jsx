@@ -1,5 +1,3 @@
-var globalInfo = '';
-
 class Checkout extends React.Component{
   constructor(props) {
     super(props);
@@ -31,6 +29,19 @@ class Next extends React.Component{
     e.preventDefault();
     if (this.state.showForm1) {
       console.log('1');
+
+      $.ajax({
+        url: "http://localhost:3000/users",
+        type: 'GET',
+        success: function(res) {
+          alert(res);
+          console.log(res[0]);
+        },
+        error: function(error) {
+          console.log(error)
+        }
+      })
+
       this.setState({
         showForm1: false,
         showForm2: true,
